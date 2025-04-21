@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { showErrorToast, showSuccessToast } from './messageHandling';
-const API_URL = 'http://localhost:5000/api';
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const fetchEvents = async (date) => {
     try {

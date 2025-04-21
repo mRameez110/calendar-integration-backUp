@@ -17,7 +17,7 @@ const AccountManager = ({ setIsAuthenticated }) => {
     const fetchAccounts = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:5000/api/users/accounts', {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/users/accounts`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -33,7 +33,7 @@ const AccountManager = ({ setIsAuthenticated }) => {
     };
 
     const handleAddAccount = () => {
-        window.location.href = 'http://localhost:5000/auth/google';
+        window.location.href = import.meta.env.VITE_AUTH_URL;
     };
 
     const handleRemoveAccount = async (accountId) => {
@@ -42,7 +42,7 @@ const AccountManager = ({ setIsAuthenticated }) => {
         if (!confirmDelete) return;
         try {
 
-            const response = await axios.delete(`http://localhost:5000/api/users/accounts/${accountId}`, {
+            const response = await axios.delete(`${import.meta.env.VITE_API_URL}/users/accounts/${accountId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

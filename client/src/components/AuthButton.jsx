@@ -1,6 +1,6 @@
 const AuthButton = ({ setIsAuthenticated }) => {
     const handleGoogleAuth = () => {
-        window.location.href = 'http://localhost:5000/auth/google';
+        window.location.href = import.meta.env.VITE_AUTH_URL;
     };
 
     return (
