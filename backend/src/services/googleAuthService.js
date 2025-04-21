@@ -12,6 +12,8 @@ const googleAuthService = async (user) => {
 		{ expiresIn: '2h' }
 	);
 
-	return `http://localhost:3000/home?auth_token=${token}`;
+	return `${process.env.CLIENT_URL}/home?auth_token=${token}`;
+
+
 }
 module.exports = { googleAuthService };

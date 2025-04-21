@@ -6,7 +6,7 @@ const User = require('../models/User');
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:5000/auth/google/callback",
+    callbackURL: process.env.GOOGLE_CALLBACK_URL,
     passReqToCallback: true,
     accessType: 'offline',
     prompt: 'select_account consent',
@@ -23,15 +23,15 @@ passport.use(new GoogleStrategy({
         if (!user) {
             user = new User({
                 isSystemUser: true,
-                googleAccounts: []  
+                googleAccounts: []
             });
         }
 
-        
+
         if (!Array.isArray(user.googleAccounts)) {
             user.googleAccounts = [];
         }
-        
+
         const existingAccount = user.googleAccounts.find(acc => acc.googleId === profile.id);
 
         if (existingAccount) {
