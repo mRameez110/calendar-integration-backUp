@@ -29,8 +29,8 @@ const AppRoutes = () => {
       {isAuthenticated ? (
         <>
           <Route path="/" element={<DashboardLayout />}>
-            <Route path="home" element={<Home />} />
-            <Route path="accounts" element={<AccountManager setIsAuthenticated={setIsAuthenticated} />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/accounts" element={<AccountManager setIsAuthenticated={setIsAuthenticated} />} />
             <Route path="*" element={<Navigate to="/home" replace />} />
           </Route>
         </>
